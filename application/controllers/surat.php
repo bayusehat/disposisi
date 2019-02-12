@@ -13,10 +13,12 @@ class Surat extends CI_Controller {
 	if($this->session->userdata('logged_in') == TRUE){	
 		if($this->session->userdata('jabatan') == 'Sekretaris'){
 		$data['main_view'] = 'dashboard';
+		$data['title'] = 'Dashboard';
 		$this->load->view('template',$data);
 
 		}else{
 			$data['main_view'] = 'disposisi_masuk';
+			$data['title'] = 'Disposisi Masuk';
 			$data['data_surat'] = $this->suratmodel->get_surat_masuk_id($this->uri->segment(3));
 			$data['data_disposisi'] = $this->suratmodel->get_all_dis_masuk($this->session->userdata('id_pegawai'));
 			$this->load->view('template',$data);
@@ -26,23 +28,11 @@ class Surat extends CI_Controller {
 			}
 		}
 
-		// 	public function ke_disposisi(){
-		// 	if($this->session->userdata('logged_in') == TRUE){
-		// 		if($this->session->userdata('jabatan') == 'Sekretaris'){
-		// 		$data['main_view'] = 'data_disposisi';
-		// 		$this->load->view('template',$data);
-		// 	}else{
-		// 		redirect('user');
-		// 	}
-		// }else{
-		// 	redirect('user');
-		// }
-		// 	}
-
 	public function surat_masuk(){
 		if($this->session->userdata('logged_in') == TRUE){
 			if($this->session->userdata('jabatan') == 'Sekretaris'){
 		$data['main_view'] = 'data_surat_masuk';
+		$data['title'] = 'Surat Masuk';
 		$data['surat_masuk'] = $this->suratmodel->get_surat_masuk();
 		$this->load->view('template',$data);
 	}else{
@@ -151,6 +141,7 @@ class Surat extends CI_Controller {
 		if($this->session->userdata('logged_in') == TRUE){
 			if($this->session->userdata('jabatan') == 'Sekretaris'){
 		$data['main_view'] = 'data_surat_keluar';
+		$data['title'] = 'Surat Keluar';
 		$data['surat_keluar'] = $this->suratmodel->get_surat_keluar();
 		$this->load->view('template',$data);
 	}else{
@@ -333,6 +324,7 @@ class Surat extends CI_Controller {
 			if($this->session->userdata('jabatan') == 'Sekretaris'){
 
 				$data['main_view'] = 'data_disposisi';
+				$data['title'] = 'Data Disposisi';
 				$data['data_surat'] = $this->suratmodel->get_surat_masuk_id($this->uri->segment(3));
 				$data['dropdown'] = $this->suratmodel->get_jabatan();
 				$data['data_disposisi'] = $this->suratmodel->get_all_disposisi($id_surat);
@@ -352,6 +344,7 @@ class Surat extends CI_Controller {
 		if($this->session->userdata('logged_in') == TRUE){
 
 			$data['main_view'] = 'disposisi_keluar';
+			$data['title'] = 'Disposisi Keluar';
 			$data['data_disposisi'] = $this->suratmodel->get_all_dis_keluar($id_pegawai_pengirim);
 			$data['data_surat'] = $this->suratmodel->get_surat_masuk_id($this->uri->segment(3));
 			$data['dropdown'] = $this->suratmodel->get_jabatan();

@@ -62,7 +62,7 @@
                                         <td>
                                             <a href="'.base_url('./uploads/'.$data->file_surat).'" class="btn btn-info btn-sm">Lihat</a>
                                             <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_ubah" onclick="update_keluar('.$data->id_surat_keluar.')">Ubah</a>
-                                            <a href="'.base_url('index.php/surat/hapus_surat_keluar/'.$data->id_surat_keluar).'" class="btn btn-danger btn-sm"><span class="fa fa-umbrella"></span> Hapus</a>
+                                            <a href="'.base_url('index.php/surat/hapus_surat_keluar/'.$data->id_surat_keluar).'" class="btn btn-danger btn-sm"> Hapus</a>
                                         </td>
                                     </tr>';
                                 }
